@@ -134,7 +134,7 @@ function Register({ navigation }) {
             </Row>
             <Row className="mb-3">
               <Form.Group as={Col} controlId="dob">
-                <Form.Label>Select Date</Form.Label>
+                <Form.Label>Birthdate</Form.Label>
                 <Form.Control
                   type="date"
                   name="dob"

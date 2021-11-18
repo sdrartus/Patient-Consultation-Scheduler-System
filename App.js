@@ -28,10 +28,6 @@ import {
   Carousel,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { DatePicker } from "react-native-datepicker";
-import { Calendar, CalendarList, Agenda } from "react-native-calendars";
-import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
 
 function StartScreen({ navigation }) {
   return (
@@ -51,6 +47,7 @@ function StartScreen({ navigation }) {
   );
 }
 
+// LOGIN SCREEN
 function Profile({ navigation }) {
   return (
     <ImageBackground source={require("./assets/3.jpg")} style={styles.img}>
@@ -106,6 +103,7 @@ function Profile({ navigation }) {
   );
 }
 
+// REGISTER
 function Register({ navigation }) {
   return (
     <ScrollView //Container Set
@@ -176,6 +174,7 @@ function Register({ navigation }) {
                 variant="primary"
                 type="submit"
                 style={{ margin: 5, padding: 1 }}
+                onClick={() => navigation.navigate("Consultation")}
               >
                 Register
               </Button>
@@ -194,6 +193,21 @@ function Register({ navigation }) {
   );
 }
 
+// SET CONSULTATION
+function Consultation({ navigation }) {
+  return (
+    <View style={{ flex: 1, backgroundColor: "white" }}>
+      <ImageBackground
+        source={require("./assets/5.jpg")}
+        style={{ height: 100 }}
+        >
+          <Form>
+          </Form>
+       </ImageBackground>
+    </View>
+  );
+}
+
 const forFade = ({ current }) => ({
   cardStyle: {
     opacity: current.progress,
@@ -209,9 +223,18 @@ function MyStack() {
         component={StartScreen}
         options={{
           headerShown: false,
+          cardStyleInterpolator:
+            CardStyleInterpolators.forFadeFromBottomAndroid,
         }}
       />
-      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          cardStyleInterpolator:
+            CardStyleInterpolators.forFadeFromBottomAndroid,
+        }}
+      />
       <Stack.Screen
         name="Register"
         options={{
@@ -220,6 +243,13 @@ function MyStack() {
             CardStyleInterpolators.forFadeFromBottomAndroid,
         }}
         component={Register}
+      />
+      <Stack.Screen
+        name="Consultation"
+        component={Consultation}
+        options={{
+          headerShown: false,
+        }}
       />
     </Stack.Navigator>
   );
